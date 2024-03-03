@@ -8,6 +8,7 @@ import (
 	"strconv"
 )
 
+// GenFile generates random numbers and writes them to a file.
 func GenFile() {
 	// Generate 10 random numbers and write to file
 	err := generateRandomNumbersToFile("random_numbers100000000.txt", 100000000)
@@ -18,6 +19,7 @@ func GenFile() {
 	fmt.Println("Random numbers generated and saved to file.")
 }
 
+// generateRandomNumbersToFile generates random numbers and writes them to a file.
 func generateRandomNumbersToFile(filename string, count int) error {
 	// Open file for writing
 	file, err := os.Create(filename)
@@ -43,6 +45,8 @@ func generateRandomNumbersToFile(filename string, count int) error {
 
 	return nil
 }
+
+// readLinesFromFile reads lines from a file and returns them as a slice of strings.
 func readLinesFromFile(filename string) ([]string, error) {
 	// Open the file
 	file, err := os.Open(filename)
