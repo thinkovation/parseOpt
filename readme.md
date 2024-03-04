@@ -14,7 +14,10 @@ So the temperature string will always be between 3 and 5 characters long - eg 1.
 
 Aside from the minus symbol and the decimal point, all other characters will be in the set [0,1,2,3,4,5,6,7,8,9] and it's assumed that they'll be represented by single byte ascii codes.
 
-So it clearly looks like there'll be scope for creating a very tuned parser.
+So it clearly looks like there'll be scope for creating a very tuned parser since the std library parser is beefed up to handle all sorts - and does a lot of validation which we can bypass given our knowledge of the dataset.
+
+Interestingly: CodeRabbitAI (which I am experimenting with) spots the fact that I'm skipping some obvious checks - And generated the following comment automatically when it looked at my Pull Request:
+> The optimized parsing logic based on input length is a good approach for performance improvement. However, it assumes specific input formats (3 or other lengths) without validating the input string's format or content, which could lead to incorrect parsing or errors for unexpected input. Consider adding input validation or documenting expected input formats.
 
 This project currently contains 6 parsing functions, and I can't think of any other options to try - but hey, if you come up with something then let me know!
 
@@ -120,3 +123,6 @@ The times are in milliseconds and are the time taken to process the string array
 | FastParserOptimised       | 48.10      | 45.91     | 33.84    | 76.15    |
 | CustomBRCParserChatGPT    | 68.81      | 65.48     | 52.07    | 97.95    |
 | StandardParseFloat        | 165.25     | 154.57    | 134.5    | 235 -     |
+
+### https://coderabbit.ai/
+A tiny note about coderabbit.ai - CodeRabbit is an AI-based code review tool that integrates with GitHub (and other sourcecode platforms). It's free for public (oss) projects and provides automated commentary on PR's - as well as a bunch of other things. I've only been using it for a very short while, but I can already see it becoming a must-have service.
